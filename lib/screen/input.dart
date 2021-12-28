@@ -19,6 +19,9 @@ class _InputDataState extends State<InputData> {
   late final Box box;
 
   _addData() async {
+    if (!_subtitle.text.substring(0, 5).contains('http')) {
+        _subtitle.text = "http://" + _subtitle.text;
+    }
     Web newWeb = Web(title: _title.text, subtitle: _subtitle.text);
     box.add(newWeb);
   }
@@ -77,8 +80,8 @@ class _InputDataState extends State<InputData> {
             SizedBox(
               height: 24,
             ),
-            ElevatedButton(
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 if (_formKey.currentState!.validate()) {
                   _addData();
                   Navigator.of(context).pop();
