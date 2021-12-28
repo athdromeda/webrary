@@ -14,6 +14,13 @@ class ItemCard extends StatelessWidget {
     return Slidable(
       key: ValueKey(0),
       child: ListTile(
+        onTap: (null),
+        leading: Container(
+          height: 10,
+          width: 10,
+          color: Colors.teal,
+          child: Center(child: Text(title[0], style: TextStyle(color: Colors.white),)),
+        ),
         title: Text(
           title,
           style: TextStyle(

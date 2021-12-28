@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:rewebrary/screen/input.dart';
+import 'package:rewebrary/ui/item.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -29,7 +30,11 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
+          backgroundColor: Colors.teal,
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
           onPressed: () => Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => InputData()))),
       body: Container(
@@ -39,14 +44,13 @@ class _HomeState extends State<Home> {
             builder: (context, Box box, widget) {
               if (box.isNotEmpty) {
                 return ListView.builder(
-                  itemCount: box.length,
-                  itemBuilder: (context, index) {
-                  var currentBox = box;
-                  var webData = currentBox.getAt(index);
-                  return ListTile(
-                      title: Text(webData.title),
-                      subtitle: Text(webData.subtitle));
-                });
+                    itemCount: box.length,
+                    itemBuilder: (context, index) {
+                      var currentBox = box;
+                      var webData = currentBox.getAt(index);
+                      return ItemCard(
+                          title: webData.title, subtitle: webData.subtitle);
+                    });
               } else {
                 return Text('masih kosong');
               }
