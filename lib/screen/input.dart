@@ -26,6 +26,7 @@ class _InputDataState extends State<InputData> {
     box.add(newWeb);
   }
 
+
   _pasteText() async {
     ClipboardData cdata = (await Clipboard.getData(Clipboard.kTextPlain))!;
     setState(() {
@@ -58,6 +59,13 @@ class _InputDataState extends State<InputData> {
                   labelText: 'Nama',
                   hintText: 'Masukkkan nama web...'),
               controller: _title,
+              validator: (val){
+                if(val!=null){
+                  return null;
+                }else{
+                  return "Masukkan judul dahulu";
+                }
+              },
             ),
             SizedBox(
               height: 15,
@@ -76,6 +84,13 @@ class _InputDataState extends State<InputData> {
                 ),
               ),
               controller: _subtitle,
+              validator: (val){
+                if(val!=null){
+                  return null;
+                }else{
+                  return "Masukkan alamat website dahulu";
+                }
+              },
             ),
             SizedBox(
               height: 24,
