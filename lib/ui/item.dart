@@ -21,13 +21,19 @@ class ItemCard extends StatelessWidget {
       child: ListTile(
         onTap: _launchUrl,
         leading: Container(
-          height: 10,
-          width: 10,
-          color: Colors.teal,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.teal,
+          ),
+          height: 40,
+          width: 40,
           child: Center(
               child: Text(
             title[0],
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
           )),
         ),
         title: Text(
